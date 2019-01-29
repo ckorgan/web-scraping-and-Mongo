@@ -1,0 +1,41 @@
+{% extends 'bootstrap/base.html' %}'
+
+
+    {% block content %}
+
+    <header>
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <form action="/scrape">
+                <input type="submit" value="Scrape New data" class="btn-info btn-lg" />
+            </form>
+        </div>
+    </header>
+    <div class="container">
+        <h2> Lastest Mars News</h2>
+        <h4> {{ mars_dict['mars_news'][0]['title'] }} </h4>
+        <p> {{ mars_dict['mars_news'][0]['description'] }} </p>
+    </div>
+
+    <div class="container">
+        <h3>Featured Mars Image</h3>
+        <br>
+        <div class="col-md-7">
+            <img class="img-responsive" src="{{mars_dict['featured_image_url']}}" />
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Current Weather on Mars</h3>
+                    <p> {{ mars_dict['mars_weather']}} </p>
+                </div>
+            </div>
+            <h3>Mars Facts</h3>
+            <p>{{ mars_dict['mars_fact'] | safe }}</p>
+
+        </div>
+    </div>
+    <br><br><br>
+    {% endblock %}
+
+
